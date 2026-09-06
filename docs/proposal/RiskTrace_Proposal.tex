@@ -11,6 +11,27 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{microtype}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc}
+
+% ---------- Flowchart styles (used by the small diagrams below) ----------
+\tikzset{
+  fnode/.style={rectangle, rounded corners=3pt, draw=blue!55!black, thick,
+    fill=blue!6, align=center, text width=2.6cm, minimum height=1.15cm,
+    font=\small},
+  fnodewide/.style={rectangle, rounded corners=3pt, draw=blue!55!black, thick,
+    fill=blue!6, align=center, text width=3.3cm, minimum height=1.15cm,
+    font=\small},
+  fbadge/.style={circle, fill=blue!55!black, draw=none, text=white,
+    font=\bfseries\scriptsize, inner sep=0pt, minimum size=0.5cm},
+  farr/.style={-{Latex[length=2.3mm, width=1.6mm]}, thick, blue!45!black},
+  flbl/.style={font=\scriptsize, black!55, align=center},
+}
+% \fstep{node name}{position spec}{step number}{box text}
+\newcommand{\fstep}[4]{%
+  \node[fnode, #2] (#1) {#4};%
+  \node[fbadge] at (#1.north west) {#3};%
+}
 
 \pagestyle{empty} % no page numbers / headers, matches MedFinder
 
@@ -49,7 +70,7 @@ Submitted to: Dr. Jeelani Asif\\
 
 \vspace{10pt}
 Project Team\\
-Abhishek Batra (1024030463) \ | \ Shaurya Sangwan (1024030462) \ | \ Sushain Sharma (1024030439)\\
+Shaurya Sangwan (1024030462) \ | \ Abhishek Batra (1024030463) \ | \ Sushain Sharma (1024030439)\\
 Batch: 3C32
 
 \vspace{10pt}
@@ -72,6 +93,18 @@ This project aims to improve software supply chain security by helping developer
   \item Success is defined by generating a dependency risk report containing vulnerability details, a priority ranking, and the reasons behind that ranking.
   \item CI/CD will be used for automated testing and deployment from the first iteration onward.
 \end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[node distance=0.5cm]
+\fstep{t1}{}{1}{Dependency collection \&\\ vulnerability detection}
+\fstep{t2}{right=of t1}{2}{Verify pipeline\\ end-to-end}
+\fstep{t3}{right=of t2}{3}{Add ML risk prediction\\ \& SHAP explainability}
+\draw[farr] (t1) -- (t2);
+\draw[farr] (t2) -- (t3);
+\node[flbl, below=0.4cm of t2, text width=8.5cm] {CI/CD runs automated testing and deployment from Iteration 1 onward};
+\end{tikzpicture}\\[1pt]
+{\scriptsize Figure 1: Iterative delivery approach}
+\end{center}
 
 % ================= 3. Problem Statement =================
 \propsectionplain{3}{Problem Statement}
@@ -118,6 +151,29 @@ Build a web-based platform, \textbf{RiskTrace}, that analyzes a given GitHub rep
   \item The dashboard renders the final analysis.
 \end{enumerate}
 
+\begin{center}
+\begin{tikzpicture}[node distance=0.75cm]
+\fstep{s1}{}{1}{Provide GitHub\\ repository}
+\fstep{s2}{right=of s1}{2}{Collect direct \&\\ transitive dependencies}
+\fstep{s3}{right=of s2}{3}{Match against\\ vulnerability DBs}
+\fstep{s4}{right=of s3}{4}{Generate risk\\ features}
+
+\fstep{s5}{below=1.3cm of s4}{5}{ML model predicts\\ risk score}
+\fstep{s6}{left=of s5}{6}{SHAP explains\\ prediction}
+\fstep{s7}{left=of s6}{7}{Persist results\\ in PostgreSQL}
+\fstep{s8}{left=of s7}{8}{Dashboard renders\\ final analysis}
+
+\draw[farr] (s1) -- (s2);
+\draw[farr] (s2) -- (s3);
+\draw[farr] (s3) -- (s4);
+\draw[farr] (s4.south) to[out=-90,in=90] (s5.north);
+\draw[farr] (s5) -- (s6);
+\draw[farr] (s6) -- (s7);
+\draw[farr] (s7) -- (s8);
+\end{tikzpicture}\\[1pt]
+{\scriptsize Figure 2: RiskTrace core analysis workflow}
+\end{center}
+
 \propsubsection{4.3}{Operational constraints}
 
 The project focuses on practical dependency security analysis rather than building new vulnerability databases from scratch; existing, actively maintained sources (OSV.dev, GitHub Advisory Database, NVD) are used instead. The system is designed for cloud deployment.
@@ -150,6 +206,21 @@ A three-layer architecture:
   \item \textbf{Backend:} FastAPI handling repository analysis, ML inference, and API communication.
   \item \textbf{Database:} PostgreSQL storing repository data, dependencies, vulnerabilities, and computed risk scores.
 \end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[node distance=3.4cm]
+\node[fnodewide] (fe) {Frontend\\ React + Tailwind CSS};
+\node[fnodewide, right=of fe] (be) {Backend\\ FastAPI};
+\node[fnodewide, right=of be] (db) {Database\\ PostgreSQL};
+
+\draw[farr] ($(fe.east)+(0,0.15)$) -- node[flbl, pos=0.5, above, text width=2.8cm]{Repository input, API requests} ($(be.west)+(0,0.15)$);
+\draw[farr] ($(be.west)+(0,-0.3)$) -- node[flbl, pos=0.5, below, text width=2.8cm]{Risk scores, visual data} ($(fe.east)+(0,-0.3)$);
+
+\draw[farr] ($(be.east)+(0,0.15)$) -- node[flbl, pos=0.5, above, text width=2.4cm]{Queries, writes} ($(db.west)+(0,0.15)$);
+\draw[farr] ($(db.west)+(0,-0.3)$) -- node[flbl, pos=0.5, below, text width=2.4cm]{Stored records} ($(be.east)+(0,-0.3)$);
+\end{tikzpicture}\\[1pt]
+{\scriptsize Figure 3: Three-layer web architecture}
+\end{center}
 
 \propsubsection{5.5}{CI/CD and fast delivery}
 
