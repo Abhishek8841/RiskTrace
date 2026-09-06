@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages
+
+# ==========================================
+# TRIGGER: Runs when code is pushed to main
+# ==========================================
+on:
+  push:
+    branches:
+      - main
+
+# ==========================================
+# PERMISSIONS: Required for GitHub Pages
+# ==========================================
+permissions:
+  pages: write
+  id-token: write
+
+# ==========================================
+# PREVENT CONCURRENT DEPLOYMENTS
+# ==========================================
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # ======================================
+    # ENVIRONMENT: GitHub Pages
+    # ======================================
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Configure GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Step 3: Upload ONLY the github-pages/ folder
+      #
+      # IMPORTANT: The "path" option below tells GitHub Pages
+      # to deploy ONLY the contents of the github-pages/ folder,
+      # NOT the entire repository.
+      #
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './github-pages'
+
+      # Step 4: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
