@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RiskTrace — Supply chain risk analysis tool for open-source software dependencies.">
+  <title>RiskTrace — Supply Chain Risk Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">RiskTrace</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#proposal" class="nav-link">Proposal</a></li>
+        <li><a href="#diagrams" class="nav-link">UML Diagrams</a></li>
+        <li><a href="#journals" class="nav-link">Journals</a></li>
+        <li><a href="#team" class="nav-link">Team</a></li>
+        <li><a href="https://github.com/AIShaurya777/RiskTrace" target="_blank" class="nav-link">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container">
+      <p class="hero-label">Open Source Project</p>
+      <h1 class="hero-title">RiskTrace</h1>
+      <p class="hero-subtitle">Supply chain risk analysis for open-source software dependencies.</p>
+      <div class="hero-actions">
+        <a href="#about" class="btn btn-primary">Learn More</a>
+        <a href="https://github.com/AIShaurya777/RiskTrace" target="_blank" class="btn btn-outline">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <p class="section-label">Overview</p>
+      <h2 class="section-title">What is RiskTrace?</h2>
+      <p class="section-desc">
+        RiskTrace scans a GitHub repository, extracts direct and transitive dependencies, matches them against known vulnerability databases, and produces a risk score with actionable recommendations.
+      </p>
+      <div class="grid grid-4">
+        <div class="card">
+          <h3>Dependency Scanning</h3>
+          <p>Extracts direct and transitive dependencies from any GitHub repository.</p>
+        </div>
+        <div class="card">
+          <h3>Vulnerability Matching</h3>
+          <p>Cross-references dependencies against known vulnerability databases.</p>
+        </div>
+        <div class="card">
+          <h3>Risk Scoring</h3>
+          <p>Produces a quantitative risk score for the overall supply chain.</p>
+        </div>
+        <div class="card">
+          <h3>Actionable Insights</h3>
+          <p>Provides clear recommendations on how to mitigate identified risks.</p>
+        </div>
+      </div>
+
+      <div class="datasets">
+        <h3>Datasets</h3>
+        <a href="https://www.kaggle.com/datasets/japkeeratsingh/oss-vulnerabilities/data" target="_blank" class="link-row">
+          <span>OSS Vulnerabilities Dataset — Kaggle</span>
+          <span class="arrow">&rarr;</span>
+        </a>
+        <a href="https://github.com/DataDog/malicious-software-packages-dataset" target="_blank" class="link-row">
+          <span>Malicious Software Packages — DataDog</span>
+          <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPOSAL -->
+  <section class="section section-alt" id="proposal">
+    <div class="container">
+      <p class="section-label">Documentation</p>
+      <h2 class="section-title">Project Proposal</h2>
+      <p class="section-desc">
+        The formal proposal outlines the problem statement, objectives, technical approach, and deliverables.
+      </p>
+      <div class="grid grid-3">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/proposal/RiskTrace_Proposal.pdf" target="_blank" class="card card-link">
+          <h3>RiskTrace Proposal</h3>
+          <p>Complete project proposal document</p>
+          <span class="tag">PDF</span>
+        </a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/proposal/RiskTrace_Proposal.tex" target="_blank" class="card card-link">
+          <h3>LaTeX Source</h3>
+          <p>Source file for the proposal</p>
+          <span class="tag">TEX</span>
+        </a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/idea-pitch-ppt.pdf" target="_blank" class="card card-link">
+          <h3>Idea Pitch Presentation</h3>
+          <p>Project pitch deck</p>
+          <span class="tag">PDF</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UML DIAGRAMS -->
+  <section class="section" id="diagrams">
+    <div class="container">
+      <p class="section-label">System Design</p>
+      <h2 class="section-title">UML Diagrams</h2>
+      <p class="section-desc">
+        Formal system design documentation representing the architecture, data flow, and use cases.
+      </p>
+      <div class="grid grid-3">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/uml-diagrams/architecture.pdf" target="_blank" class="card card-link">
+          <h3>Architecture Diagram</h3>
+          <p>High-level system components and their interactions</p>
+        </a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/uml-diagrams/data-flow.pdf" target="_blank" class="card card-link">
+          <h3>Data Flow Diagram</h3>
+          <p>Internal processing and data movement within subsystems</p>
+        </a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/uml-diagrams/use-case.pdf" target="_blank" class="card card-link">
+          <h3>Use Case Diagram</h3>
+          <p>Interactions between users and the system</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNALS -->
+  <section class="section section-alt" id="journals">
+    <div class="container">
+      <p class="section-label">Contributions</p>
+      <h2 class="section-title">Team Journals</h2>
+      <p class="section-desc">
+        Individual contribution logs documenting each team member's weekly progress.
+      </p>
+      <div class="grid grid-3">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/journals/1024030463-Abhishek-Batra.md" target="_blank" class="card card-link">
+          <div class="avatar">AB</div>
+          <h3>Abhishek Batra</h3>
+          <p>Roll No. 1024030463</p>
+        </a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/journals/1024030462-Shaurya-Sangwan.md" target="_blank" class="card card-link">
+          <div class="avatar">SS</div>
+          <h3>Shaurya Sangwan</h3>
+          <p>Roll No. 1024030462</p>
+        </a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/journals/1024030439-Sushain-Sharma.md" target="_blank" class="card card-link">
+          <div class="avatar">SS</div>
+          <h3>Sushain Sharma</h3>
+          <p>Roll No. 1024030439</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" id="team">
+    <div class="container">
+      <p class="section-label">People</p>
+      <h2 class="section-title">Meet the Team</h2>
+      <div class="grid grid-3">
+        <div class="card card-center">
+          <div class="avatar avatar-lg">SS</div>
+          <h3>Shaurya Sangwan</h3>
+          <p>1024030462</p>
+        </div>
+        <div class="card card-center">
+          <div class="avatar avatar-lg">AB</div>
+          <h3>Abhishek Batra</h3>
+          <p>1024030463</p>
+        </div>
+        <div class="card card-center">
+          <div class="avatar avatar-lg">SS</div>
+          <h3>Sushain Sharma</h3>
+          <p>1024030439</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-brand">RiskTrace</p>
+      <p class="footer-text">A supply chain risk analysis tool for open-source software dependencies.</p>
+      <div class="footer-links">
+        <a href="https://github.com/AIShaurya777/RiskTrace" target="_blank">GitHub</a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/tree/main/code" target="_blank">Source Code</a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/tree/main/docs" target="_blank">Docs</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
