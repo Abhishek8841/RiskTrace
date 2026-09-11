@@ -22,9 +22,9 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#flow" class="nav-link">Flow</a></li>
         <li><a href="#proposal" class="nav-link">Proposal</a></li>
-        <li><a href="#diagrams" class="nav-link">UML Diagrams</a></li>
-        <li><a href="#journals" class="nav-link">Journals</a></li>
+        <li><a href="#diagrams" class="nav-link">Diagrams</a></li>
         <li><a href="#team" class="nav-link">Team</a></li>
         <li><a href="https://github.com/AIShaurya777/RiskTrace" target="_blank" class="nav-link">GitHub</a></li>
       </ul>
@@ -53,19 +53,31 @@
         RiskTrace scans a GitHub repository, extracts direct and transitive dependencies, matches them against known vulnerability databases, and produces a risk score with actionable recommendations.
       </p>
       <div class="grid grid-4">
-        <div class="card">
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
           <h3>Dependency Scanning</h3>
           <p>Extracts direct and transitive dependencies from any GitHub repository.</p>
         </div>
-        <div class="card">
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
           <h3>Vulnerability Matching</h3>
           <p>Cross-references dependencies against known vulnerability databases.</p>
         </div>
-        <div class="card">
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
           <h3>Risk Scoring</h3>
           <p>Produces a quantitative risk score for the overall supply chain.</p>
         </div>
-        <div class="card">
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
           <h3>Actionable Insights</h3>
           <p>Provides clear recommendations on how to mitigate identified risks.</p>
         </div>
@@ -85,8 +97,101 @@
     </div>
   </section>
 
+  <!-- PROJECT FLOW -->
+  <section class="section section-alt" id="flow">
+    <div class="container">
+      <p class="section-label">Architecture</p>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-desc">
+        The current implementation covers the full OSS web-development pipeline — from repository input to risk report. AI/ML-based analysis is architecturally planned and will be a drop-in addition.
+      </p>
+
+      <div class="flow-pipeline">
+        <!-- Step 1 -->
+        <div class="flow-step fade-in completed">
+          <div class="flow-step-number">1</div>
+          <div class="flow-step-content">
+            <span class="flow-badge badge-done">Completed</span>
+            <h3>Repository Input</h3>
+            <p>User submits a GitHub repository URL. The system registers the repo, fetches metadata (owner, name, default branch), and creates a scan record.</p>
+          </div>
+        </div>
+        <div class="flow-connector completed"></div>
+
+        <!-- Step 2 -->
+        <div class="flow-step fade-in completed">
+          <div class="flow-step-number">2</div>
+          <div class="flow-step-content">
+            <span class="flow-badge badge-done">Completed</span>
+            <h3>Manifest Discovery</h3>
+            <p>Scans the repository tree for manifest files — <code>package.json</code>, <code>requirements.txt</code>, <code>pom.xml</code>, <code>Gemfile</code>, and others — across all supported ecosystems.</p>
+          </div>
+        </div>
+        <div class="flow-connector completed"></div>
+
+        <!-- Step 3 -->
+        <div class="flow-step fade-in completed">
+          <div class="flow-step-number">3</div>
+          <div class="flow-step-content">
+            <span class="flow-badge badge-done">Completed</span>
+            <h3>Dependency Extraction</h3>
+            <p>Parses each manifest to extract direct and transitive dependencies with version information. Results are stored in the database per scan.</p>
+          </div>
+        </div>
+        <div class="flow-connector completed"></div>
+
+        <!-- Step 4 -->
+        <div class="flow-step fade-in completed">
+          <div class="flow-step-number">4</div>
+          <div class="flow-step-content">
+            <span class="flow-badge badge-done">Completed</span>
+            <h3>Vulnerability Matching</h3>
+            <p>Each dependency is checked against the OSS Vulnerabilities database. Known CVEs, severity levels, CVSS scores, and fix versions are recorded per dependency.</p>
+          </div>
+        </div>
+        <div class="flow-connector completed"></div>
+
+        <!-- Step 5 -->
+        <div class="flow-step fade-in completed">
+          <div class="flow-step-number">5</div>
+          <div class="flow-step-content">
+            <span class="flow-badge badge-done">Completed</span>
+            <h3>Risk Scoring &amp; Report</h3>
+            <p>An aggregate risk score is computed from vulnerability data. The scan is classified as LOW, MEDIUM, HIGH, or CRITICAL. A detailed report with actionable recommendations is presented to the user.</p>
+          </div>
+        </div>
+        <div class="flow-connector upcoming"></div>
+
+        <!-- Step 6 -->
+        <div class="flow-step fade-in upcoming-step">
+          <div class="flow-step-number">6</div>
+          <div class="flow-step-content">
+            <span class="flow-badge badge-upcoming">Upcoming</span>
+            <h3>AI/ML Risk Prediction</h3>
+            <p>A machine-learning model will be integrated as a drop-in module to predict risk for packages with no known CVEs, using historical vulnerability patterns and package metadata signals.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="tech-stack">
+        <h3>Tech Stack</h3>
+        <div class="tech-tags">
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Hono</span>
+          <span class="tech-tag">Prisma</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Vite</span>
+          <span class="tech-tag">Docker</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROPOSAL -->
-  <section class="section section-alt" id="proposal">
+  <section class="section" id="proposal">
     <div class="container">
       <p class="section-label">Documentation</p>
       <h2 class="section-title">Project Proposal</h2>
@@ -94,17 +199,17 @@
         The formal proposal outlines the problem statement, objectives, technical approach, and deliverables.
       </p>
       <div class="grid grid-3">
-        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/proposal/RiskTrace_Proposal.pdf" target="_blank" class="card card-link">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/proposal/RiskTrace_Proposal.pdf" target="_blank" class="card card-link fade-in">
           <h3>RiskTrace Proposal</h3>
           <p>Complete project proposal document</p>
           <span class="tag">PDF</span>
         </a>
-        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/proposal/RiskTrace_Proposal.tex" target="_blank" class="card card-link">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/proposal/RiskTrace_Proposal.tex" target="_blank" class="card card-link fade-in">
           <h3>LaTeX Source</h3>
           <p>Source file for the proposal</p>
           <span class="tag">TEX</span>
         </a>
-        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/idea-pitch-ppt.pdf" target="_blank" class="card card-link">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/idea-pitch-ppt.pdf" target="_blank" class="card card-link fade-in">
           <h3>Idea Pitch Presentation</h3>
           <p>Project pitch deck</p>
           <span class="tag">PDF</span>
@@ -114,7 +219,7 @@
   </section>
 
   <!-- UML DIAGRAMS -->
-  <section class="section" id="diagrams">
+  <section class="section section-alt" id="diagrams">
     <div class="container">
       <p class="section-label">System Design</p>
       <h2 class="section-title">UML Diagrams</h2>
@@ -122,15 +227,15 @@
         Formal system design documentation representing the architecture, data flow, and use cases.
       </p>
       <div class="grid grid-3">
-        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/uml-diagrams/architecture.pdf" target="_blank" class="card card-link">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/uml-diagrams/architecture.pdf" target="_blank" class="card card-link fade-in">
           <h3>Architecture Diagram</h3>
           <p>High-level system components and their interactions</p>
         </a>
-        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/uml-diagrams/data-flow.pdf" target="_blank" class="card card-link">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/uml-diagrams/data-flow.pdf" target="_blank" class="card card-link fade-in">
           <h3>Data Flow Diagram</h3>
           <p>Internal processing and data movement within subsystems</p>
         </a>
-        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/uml-diagrams/use-case.pdf" target="_blank" class="card card-link">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/docs/uml-diagrams/use-case.pdf" target="_blank" class="card card-link fade-in">
           <h3>Use Case Diagram</h3>
           <p>Interactions between users and the system</p>
         </a>
@@ -138,55 +243,30 @@
     </div>
   </section>
 
-  <!-- JOURNALS -->
-  <section class="section section-alt" id="journals">
-    <div class="container">
-      <p class="section-label">Contributions</p>
-      <h2 class="section-title">Team Journals</h2>
-      <p class="section-desc">
-        Individual contribution logs documenting each team member's weekly progress.
-      </p>
-      <div class="grid grid-3">
-        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/journals/1024030463-Abhishek-Batra.md" target="_blank" class="card card-link">
-          <div class="avatar">AB</div>
-          <h3>Abhishek Batra</h3>
-          <p>Roll No. 1024030463</p>
-        </a>
-        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/journals/1024030462-Shaurya-Sangwan.md" target="_blank" class="card card-link">
-          <div class="avatar">SS</div>
-          <h3>Shaurya Sangwan</h3>
-          <p>Roll No. 1024030462</p>
-        </a>
-        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/journals/1024030439-Sushain-Sharma.md" target="_blank" class="card card-link">
-          <div class="avatar">SS</div>
-          <h3>Sushain Sharma</h3>
-          <p>Roll No. 1024030439</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM -->
+  <!-- TEAM (merged — single section with names + journal links) -->
   <section class="section" id="team">
     <div class="container">
       <p class="section-label">People</p>
-      <h2 class="section-title">Meet the Team</h2>
+      <h2 class="section-title">Team</h2>
       <div class="grid grid-3">
-        <div class="card card-center">
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/journals/1024030462-Shaurya-Sangwan.md" target="_blank" class="card card-link card-center fade-in">
           <div class="avatar avatar-lg">SS</div>
           <h3>Shaurya Sangwan</h3>
           <p>1024030462</p>
-        </div>
-        <div class="card card-center">
+          <span class="tag">Journal</span>
+        </a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/journals/1024030463-Abhishek-Batra.md" target="_blank" class="card card-link card-center fade-in">
           <div class="avatar avatar-lg">AB</div>
           <h3>Abhishek Batra</h3>
           <p>1024030463</p>
-        </div>
-        <div class="card card-center">
+          <span class="tag">Journal</span>
+        </a>
+        <a href="https://github.com/AIShaurya777/RiskTrace/blob/main/journals/1024030439-Sushain-Sharma.md" target="_blank" class="card card-link card-center fade-in">
           <div class="avatar avatar-lg">SS</div>
           <h3>Sushain Sharma</h3>
           <p>1024030439</p>
-        </div>
+          <span class="tag">Journal</span>
+        </a>
       </div>
     </div>
   </section>
